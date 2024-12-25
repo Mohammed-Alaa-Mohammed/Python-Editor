@@ -1,0 +1,547 @@
+    /* عام */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #2e2e2e;
+        color: white;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      
+      /* تهيئة النصوص */
+      h1 {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 36px;
+        font-weight: bold;
+      }
+      
+      /* الحاوية الرئيسية */
+      .container {
+        width: 80%;
+        margin: 0 auto;
+      }
+      
+      /* أدوات التحكم */
+      .controls {
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+      
+      /* الأزرار 3D */
+      button {
+        background: linear-gradient(145deg, #505ab7, #13700f);
+        border: none;
+        color: white;
+        padding: 12px 20px;
+        border-radius: 10px;
+        font-size: 16px;
+        cursor: pointer;
+        box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.15), -5px -5px 15px rgba(255, 255, 255, 0.1);
+        transition: all 0.3s ease-in-out;
+      }
+      
+      button:hover {
+        transform: translateY(-3px);
+        box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25), -5px -5px 25px rgba(255, 255, 255, 0.2);
+      }
+      
+      button:active {
+        transform: translateY(2px);
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(255, 255, 255, 0.1);
+      }
+      
+      button:disabled {
+        background: #ccc;
+        cursor: not-allowed;
+      }
+      
+      /* Customize Style Button of 'New File' */
+      .btn-bt-file:hover::before {
+        top: -30px;
+        left: -30px;
+      }
+      
+      .btn-bt-file::before:active {
+        background: #3e0ca3;
+        transition: background 0s;
+      }
+      
+      /* القوائم المنسدلة */
+      select {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px;
+        border: none;
+        font-size: 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+        margin-left: 10px;
+        cursor: pointer;
+      }
+      
+      select:hover {
+        background-color: #45a049;
+      }
+      
+      /* محرر الأكواد */
+ /* تصميم المحرر */
+#editor {
+    height: 400px; /* يمكن تخصيصه حسب الحاجة */
+    font-size: 15px;
+    width: 100%; /* العرض بالكامل */
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: #1e1e1e; /* خلفية داكنة للمحرر */
+    color: #fff; /* نص أبيض */
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace; /* اختيار خط مخصص للأكواد */
+    line-height: 1.5; /* تحسين المسافة بين الأسطر */
+    overflow-y: auto; /* تمكين التمرير الرأسي */
+    border: 1px solid #333;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease; /* تأثير تغيير الوضع */
+}
+
+/* الوضع الداكن */
+#editor.dark-mode {
+    background-color: #121212;
+    color: #bbb; /* نص فاتح */
+}
+
+/* إضافة تمييز للأسطر عند التحويم */
+#editor .line-highlight {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+/* تأثير التمرير على المحرر */
+#editor:hover {
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* إضافة الميديا ريسبونسف للتأكد من تناسب المحرر على الشاشات الصغيرة */
+@media (max-width: 768px) {
+    #editor {
+        height: 300px; /* تقليل ارتفاع المحرر للأجهزة الصغيرة */
+        font-size: 13px; /* تقليل حجم الخط على الشاشات الصغيرة */
+    }
+}
+
+@media (max-width: 480px) {
+    #editor {
+        height: 250px; /* تقليل ارتفاع المحرر بشكل أكبر على الشاشات الصغيرة جدًا */
+        font-size: 12px; /* تقليل حجم الخط أكثر على الشاشات الصغيرة جدًا */
+    }
+}
+
+/* تغيير حجم المحرر ليملأ كامل الشاشة عند التبديل إلى وضع ملء الشاشة */
+#editor.full-screen {
+    height: 100vh; /* استخدام ارتفاع كامل للنافذة */
+    width: 100vw; /* استخدام عرض كامل للنافذة */
+    margin: 0; /* إزالة المسافة */
+    border-radius: 0; /* إزالة الحواف الدائرية */
+}
+
+
+      /* الوضع الداكن وعكسة */
+
+/* الوضع الفاتح */
+body.light-mode {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.light-mode .container {
+    background-color: #fff;
+    color: #333;
+}
+
+/* الوضع الداكن */
+body.dark-mode {
+    background-color: #2e2e2e;
+    color: #fff;
+}
+
+.dark-mode .container {
+    background-color: #333;
+    color: #fff;
+}
+
+.dark-mode #editor {
+    background-color: #2e2e2e;
+    color: #fff;
+}
+
+#toggleModeBtn {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+#toggleModeBtn:hover {
+    background-color: #555;
+}
+
+      
+      /* معاينة الكود */
+      .preview {
+        background-color: #1e1e1e;
+        padding: 20px;
+        border-radius: 5px;
+        margin-top: 20px;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      }
+      
+      .preview pre {
+        color: #dcdcdc;
+        font-family: "Courier New", Courier, monospace;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+      }
+      
+      /* التنبيهات والإشعارات */
+      .notification {
+        display: none;
+        font-size: 18px;
+        font-weight: bold;
+        padding: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        border-radius: 5px;
+        width: 100%;
+        margin-top: 20px;
+      }
+      
+      .notification.success {
+        background-color: #28a745;
+        color: white;
+      }
+      
+      .notification.error {
+        background-color: #dc3545;
+        color: white;
+      }
+      
+      /* الرسالة */
+      #message {
+        font-size: 18px;
+        font-weight: bold;
+        margin-top: 20px;
+        text-align: center;
+        color: #4CAF50;
+      }
+      
+      /* الفوتر */
+      footer {
+        text-align: center;
+        margin-top: 30px;
+        font-size: 16px;
+        color: #bbb;
+      }
+      
+      footer p {
+        margin: 0;
+      }
+      
+      /* جعل الموقع متجاوب */
+      @media (max-width: 1200px) {
+        .container {
+          width: 90%;
+        }
+      
+        h1 {
+          font-size: 32px;
+        }
+      
+        button {
+          font-size: 14px;
+          padding: 10px;
+        }
+      
+        select {
+          font-size: 14px;
+        }
+      
+        #editor {
+          height: 350px;
+        }
+      
+        .preview {
+          padding: 15px;
+        }
+      }
+      
+      @media (max-width: 992px) {
+        .container {
+          width: 85%;
+        }
+      
+        h1 {
+          font-size: 28px;
+        }
+      
+        button {
+          font-size: 14px;
+          padding: 10px;
+        }
+      
+        select {
+          font-size: 14px;
+        }
+      
+        #editor {
+          height: 300px;
+        }
+      
+        .preview {
+          padding: 15px;
+        }
+      }
+      
+      @media (max-width: 768px) {
+        .controls {
+          flex-direction: column;
+          align-items: center;
+        }
+      
+        .container {
+          width: 90%;
+        }
+      
+        h1 {
+          font-size: 28px;
+        }
+      
+        button {
+          width: 100%;
+          font-size: 14px;
+          padding: 10px;
+        }
+      
+        select {
+          width: 100%;
+          margin-top: 10px;
+          font-size: 14px;
+        }
+      
+        #editor {
+          height: 300px;
+        }
+      
+        .preview {
+          padding: 10px;
+        }
+      }
+      
+      @media (max-width: 480px) {
+        .container {
+          width: 95%;
+        }
+      
+        h1 {
+          font-size: 24px;
+        }
+      
+        button {
+          width: 100%;
+          font-size: 12px;
+          padding: 8px;
+        }
+      
+        select {
+          width: 100%;
+          margin-top: 10px;
+          font-size: 14px;
+        }
+      
+        #editor {
+          height: 250px;
+        }
+      
+        .preview {
+          padding: 5px;
+        }
+      
+        /* لتوفير مسافات أكبر بين الإدخالات */
+        #searchArea,
+        .search-replace {
+          flex-direction: column;
+          align-items: center;
+        }
+      
+        #searchInput,
+        #replaceInput {
+          width: 100%;
+          margin-bottom: 10px;
+        }
+      
+        #searchBtn,
+        #replaceBtn {
+          width: 100%;
+        }
+      }
+      
+      /* في حالة الشاشات الكبيرة جداً */
+      @media (min-width: 1600px) {
+        .container {
+          width: 80%;
+        }
+      
+        h1 {
+          font-size: 36px;
+        }
+      
+        button {
+          font-size: 16px;
+          padding: 12px 20px;
+        }
+      
+        select {
+          font-size: 16px;
+        }
+      
+        #editor {
+          height: 450px;
+        }
+      
+        .preview {
+          padding: 20px;
+        }
+      }
+      
+      @media (min-width: 2000px) {
+        .container {
+          width: 75%;
+        }
+      
+        h1 {
+          font-size: 38px;
+        }
+      
+        button {
+          font-size: 18px;
+          padding: 14px 24px;
+        }
+      
+        select {
+          font-size: 18px;
+        }
+      
+        #editor {
+          height: 500px;
+        }
+      
+        .preview {
+          padding: 25px;
+        }
+      }
+      
+      /* تنسيق الجزء الخاص بالبحث و الاستدلال */
+      #searchArea {
+        display: flex;
+        justify-content: flex-start;
+        margin: 20px 0;
+        gap: 10px;
+      }
+      
+      #searchInput {
+        width: 250px;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+      }
+      
+      #searchBtn {
+        padding: 10px 15px;
+        background-color: #008CBA;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      #searchBtn:hover {
+        background-color: #005f73;
+      }
+      
+      #searchResults {
+        margin-top: 20px;
+      }
+      
+      .searchResultItem {
+        background-color: #f0f0f0;
+        padding: 10px;
+        margin: 5px 0;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+      
+      .searchResultItem:hover {
+        background-color: #e0e0e0;
+      }
+      
+      /* تنسيق الجزء الخاص بالاستبدال */
+      #replaceInput {
+        width: 250px;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+      }
+      
+      #replaceBtn {
+        padding: 10px 15px;
+        background-color: #28a745;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      #replaceBtn:hover {
+        background-color: #218838;
+      }
+      
+      .search-replace {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+        margin-top: 20px;
+      }
+      
+      #replaceInput,
+      #searchInput {
+        width: 250px;
+        padding: 10px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+        font-size: 16px;
+      }
+      
+      #replaceBtn,
+      #searchBtn {
+        padding: 10px 15px;
+        background-color: #008CBA;
+        color: white;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      #replaceBtn:hover,
+      #searchBtn:hover {
+        background-color: #005f73;
+      }
+      
+      /* مسافة بين إدخال الأكواد */
+      #codeInput {
+        margin-bottom: 40px; /* مسافة بين إدخال الأكواد */
+      }
