@@ -84,8 +84,7 @@
             <button id="exportBtn"><i class="fa fa-download"></i> Export Code</button>
             <button id="previewBtn"><i class="fa fa-eye"></i> Preview Code</button>
             <button id="runBtn"><i class="fa fa-play"></i> Run Code</button>
-            <!-- زر تغيير الوضع -->
-            <button id="toggleModeBtn" class="btn-bt-file"><i class="fa fa-moon"></i> Dark Mode</button>
+            <button id="fullScreenButton" onclick="toggleFullScreen()">شاشة كاملة</button>
 
             <button id="saveFileBtn"><i class="fa fa-save"></i> Save File</button>
             
@@ -889,36 +888,15 @@ document.getElementById("newFileBtn").addEventListener("click", function () {
 
 // Add to Full screen
 
-document.getElementById('fullScreenBtn').addEventListener('click', () => {
-    const editor = document.querySelector('.editor'); // استبدل '.editor' بالعنصر الذي تريد تكبيره
+function toggleFullScreen() {
     if (!document.fullscreenElement) {
-        editor.requestFullscreen().catch(err => {
-            console.error(`Error attempting to enable full-screen mode: ${err.message}`);
-        });
+        document.documentElement.requestFullscreen();
     } else {
-        document.exitFullscreen();
+        if (document.exitFullscreen) {
+            document.exitFullscreen();
+        }
     }
-});
-
-
-// تغيير الوضع بين الداكن والفاتح
-document.getElementById("toggleModeBtn").addEventListener("click", function() {
-    var body = document.body;
-    var currentMode = body.classList.contains('dark-mode') ? 'dark' : 'light';
-    
-    if (currentMode === 'light') {
-        // تفعيل الوضع الداكن
-        body.classList.add('dark-mode');
-        body.classList.remove('light-mode');
-        document.getElementById("toggleModeBtn").innerHTML = '<i class="fa fa-sun"></i> Light Mode'; // تغيير النص في الزر
-    } else {
-        // تفعيل الوضع الفاتح
-        body.classList.add('light-mode');
-        body.classList.remove('dark-mode');
-        document.getElementById("toggleModeBtn").innerHTML = '<i class="fa fa-moon"></i> Dark Mode'; // تغيير النص في الزر
-    }
-});
-
+}
 
 
     </script>
