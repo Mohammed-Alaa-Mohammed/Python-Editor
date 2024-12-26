@@ -1,928 +1,289 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Code Editor</title>
-    <!-- META TAGS -->
-     <meta name="description" content="Code Editor , Code , VS CODE , vs code , code editor , edit , webeditor , WEBEDITOR">
-     <meta name="author" content="Developer : Mohammed Alaa Mohammed">
-      <!-- تحديد لون الثيم للمتصفح -->
-     <meta name="theme-color" content="2e2e2e">
-
-<!--   SUPER MATE TAGS   -->
-
-     <!-- Meta Tags to share a WhatsAPP -->
-
-    <!-- تحديد اللغة الافتراضية للمحتوى (العربية في هذه الحالة) -->
-    <meta property="og:locale" content="ar_AR">
-
-    <!-- تحديد لغة بديلة: الإنجليزية (الولايات المتحدة) -->
-    <meta property="og:locale:alternate" content="en_US">
-
-    
-    <meta property="og:locale" content="ar_AR"> <!-- اللغة الافتراضية -->
-    <meta property="og:locale:alternate" content="en_US"> <!-- لغة بديلة -->
-    <meta property="og:locale:alternate" content="fr_FR"> <!-- لغة بديلة إضافية -->
-
-    <!--    -->
-
-     <!-- عنوان الصفحة عند مشاركتها على WhatsApp -->
-     <meta property="og:title" content="Python Code Editor | Mohammed Alaa Mohammed">
-
-    
-    <!-- وصف الصفحة عند مشاركتها على WhatsApp -->
-    <meta property="og:description" content="Python Code Editor Online">
-
-
-
-    <!-- صورة مصغرة ستظهر عند مشاركة الرابط على WhatsApp -->
-    <meta property="og:image" content="https://img.icons8.com/?size=48&id=0OQR1FYCuA9f&format=png">
-
-
-    <!-- الرابط الفعلي للصفحة للمشاركة -->
-    <meta property="og:url" content="https://mohammed-alaa-mohammed.github.io/Mohammed-Alaa-Code-Editor/">
-
-
-    <!-- تحديد نوع المحتوى عند المشاركة عبر WhatsApp (مثلاً "website" أو "article") -->
-    <meta property="og:type" content="website">
-
-
-    <!-- تحديد اسم الموقع عند مشاركته عبر WhatsApp -->
-    <meta property="og:site_name" content="Python Code Editor Online | Mohammed Alaa Mohammed">
-
-
-     <!-- تاريخ إنشاء الصفحة أو آخر تعديل لها (اختياري) -->
-     <meta name="date" content="2024-10-15">
-
-    <!-- تفعيل صفحة الويب للتفاعل مع الأجهزة المحمولة -->
-    <meta name="mobile-web-app-capable" content="yes">
-
-    <!-- تحديد المستعرضات أو التطبيقات التي يجب دعمها بشكل خاص -->
-    <meta name="apple-mobile-web-app-capable" content="yes">
-
-     <!-- تعريف الصورة التي ستظهر عند مشاركة الرابط على الشبكات الاجتماعية -->
-     <meta property="og:image" content="https://img.icons8.com/?size=48&id=0OQR1FYCuA9f&format=png">
-
-<!--   SUPER MATE TAGS   -->
-
-    <!-- إضافة الأيقونة للموقع -->
-    <link rel="icon" href="https://img.icons8.com/?size=48&id=0OQR1FYCuA9f&format=png" type="image/x-icon">
-
-    <!-- رابط ملف CSS -->
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <title>GitHub Clone</title>
+    <link rel="icon" href="https://img.icons8.com/?size=80&id=LoL4bFzqmAa0&format=png">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <h1>Code Editor</h1>
-
-        <!-- أدوات تحكم -->
-        <div class="controls">
-            <button id="newFileBtn" class="btn-bt-file"><i class="fa fa-file"></i> New File</button>
-            <button id="exportBtn"><i class="fa fa-download"></i> Export Code</button>
-            <button id="previewBtn"><i class="fa fa-eye"></i> Preview Code</button>
-            <button id="runBtn"><i class="fa fa-play"></i> Run Code</button>
-            <button id="fullScreenButton" onclick="toggleFullScreen()">
-    <i style="margin-left:-5px;"class="fa fa-expand"></i>Full Screen
-</button>
-            <button id="saveFileBtn"><i class="fa fa-save"></i> Save File</button>
-            
-            <!-- إضافة المزيد من الثيمات -->
-<select id="themeSelect">
-    <option value="monokai">Monokai</option>
-    <option value="github">GitHub</option>
-    <option value="solarized_dark">Solarized Dark</option>
-    <option value="solarized_light">Solarized Light</option>
-    <option value="dracula">Dracula</option>
-    <option value="twilight">Twilight</option>
-    <option value="chaos">Chaos</option>
-    <option value="clouds_midnight">Clouds Midnight</option>
-    <option value="cobalt">Cobalt</option>
-    <option value="eclipse">Eclipse</option>
-    <option value="ambiance">Ambiance</option>
-    <option value="kate">Kate</option>
-    <option value="tomorrow_night">Tomorrow Night</option>
-    <option value="xcode">XCode</option>
-    <option value="textmate">TextMate</option>
-    <option value="punchcard">Punchcard</option>
-    <option value="terminal">Terminal</option>
-    <option value="night_owl">Night Owl</option>
-    <option value="visualstudio">Visual Studio</option>
-    <option value="gruvbox_dark">Gruvbox Dark</option>
-    <option value="gruvbox_light">Gruvbox Light</option>
-    <option value="gotham">Gotham</option>
-    <option value="monokai_extended">Monokai Extended</option>
-    <option value="material">Material</option>
-    <option value="atom">Atom</option>
-    <option value="seti">Seti</option>
-    <option value="ayu_dark">Ayu Dark</option>
-    <option value="ayu_light">Ayu Light</option>
-    <option value="zenburn">Zenburn</option>
-    <option value="solarized_dark_hard">Solarized Dark Hard</option>
-    <option value="solarized_light_hard">Solarized Light Hard</option>
-    <option value="sublime">Sublime Text</option>
-</select>
-            <select id="languageSelect">
-                <option value="python">Python</option>
-                <option value="javascript">JavaScript</option>
-                <option value="c_cpp">C/C++</option>
-                <option value="html">HTML</option>
-                <option value="css">CSS</option>
-                <option value="ruby">Ruby</option>
-                <option value="php">PHP</option>
-            </select>
-            <select id="fontSizeSelect">
-                <option value="12px">Small</option>
-                <option value="16px" selected>Medium</option>
-                <option value="20px">Large</option>
-            </select>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="navbar">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">GitHero</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#"><i class="bi bi-house-door"></i> الرئيسية</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-folder"></i> المستودعات</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="bi bi-person"></i> تسجيل الدخول</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn btn-light" onclick="toggleMode()">
+                            <i class="bi bi-moon-stars-fill" id="themeIcon"></i>
+                        </button>
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
 
-        <!-- أدوات البحث والاستبدال -->
-        <div class="search-replace" style="align-items: center; justify-content: center;">
-            <input type="text" id="searchInput" placeholder="Search...">
-            <button id="searchBtn"><i class="fa fa-search"></i></button>
-            <input type="text" id="replaceInput" placeholder="Replace...">
-            <button id="replaceBtn"><i class="fa fa-exchange"></i></button>
+    <!-- Main Content -->
+    <main class="container mt-5">
+        <section class="repo-list">
+            <h2><i class="bi bi-box"></i> المستودعات</h2>
+            <button class="btn btn-success" data-bs-toggle="modal" data-bs-target="#repoModal"><i class="bi bi-plus-circle"></i> أنشئ مستودع جديد</button>
+            <div id="repositories" class="mt-3">
+                <!-- قائمة المستودعات ستظهر هنا -->
+            </div>
+        </section>
+
+        <!-- Repository Details Section -->
+        <section id="repoDetails" class="repo-details" style="display:none;">
+            <h3 id="repoTitle"><i class="bi bi-file-earmark-text"></i> تفاصيل المستودع</h3>
+            <button class="btn btn-secondary" onclick="closeDetails()"><i class="bi bi-x-circle"></i> إغلاق</button>
+            <h4 class="mt-4"><i class="bi bi-cloud-upload"></i> رفع الملفات</h4>
+            <input type="file" id="fileUpload" class="form-control" onchange="previewFile(event)">
+            <div id="filePreview" class="mt-3">
+                <!-- معاينة الملف -->
+            </div>
+            <div id="fileList" class="mt-3">
+                <!-- قائمة الملفات -->
+            </div>
+            <button class="btn btn-primary mt-3" onclick="addFile()">إضافة الملف</button>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white text-center py-3 mt-5">
+        <p>© 2024 GitHub Clone</p>
+    </footer>
+
+    <!-- Modal for Creating New Repository -->
+    <div id="repoModal" class="modal fade" tabindex="-1" aria-labelledby="repoModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="repoModalLabel"><i class="bi bi-folder-plus"></i> أنشئ مستودع جديد</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label for="repoName">اسم المستودع:</label>
+                    <input type="text" id="repoName" class="form-control" placeholder="اسم المستودع">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><i class="bi bi-x-circle"></i> إغلاق</button>
+                    <button type="button" class="btn btn-primary" onclick="saveRepo()"><i class="bi bi-save"></i> حفظ</button>
+                </div>
+            </div>
         </div>
-
-        <!-- محرر الكود -->
-        <div id="editor" style="margin-top: 8px;"></div>
-
-        <!-- معاينة الكود -->
-        <div class="preview">
-            <h3>Code Preview</h3>
-            <pre id="previewArea"></pre>
-        </div>
-
-        <!-- تنبيه الأخطاء -->
-        <div id="errorNotification" class="notification"></div>
-
-        <!-- رسالة -->
-        <div id="message"></div>
-
-        <!-- معلومات المطور -->
-        <footer>
-            <p>DEV : Mohammed Alaa Mohammed</p>
-        </footer>
     </div>
 
-    <!-- Styles -->
-<style>     
+    <!-- Toast Notification -->
+    <div id="toastMessage" class="toast align-items-center text-bg-success border-0 position-fixed bottom-0 end-0 p-3" style="z-index: 9999; display: none;">
+        <div class="d-flex">
+            <div class="toast-body">
+                <i class="bi bi-check-circle"></i> تم رفع الملف بنجاح!
+            </div>
+        </div>
+    </div>
 
-    /* عام */
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #2e2e2e;
-        color: white;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-      
-      /* تهيئة النصوص */
-      h1 {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 36px;
-        font-weight: bold;
-      }
-      
-      /* الحاوية الرئيسية */
-      .container {
-        width: 80%;
-        margin: 0 auto;
-      }
-      
-      /* أدوات التحكم */
-      .controls {
-        margin-bottom: 20px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-        gap: 10px;
-      }
-      
-      /* الأزرار 3D */
-      button {
-        background: linear-gradient(145deg, #505ab7, #13700f);
-        border: none;
-        color: white;
-        padding: 12px 20px;
-        border-radius: 10px;
-        font-size: 16px;
-        cursor: pointer;
-        box-shadow: 5px 10px 15px rgba(0, 0, 0, 0.15), -5px -5px 15px rgba(255, 255, 255, 0.1);
-        transition: all 0.3s ease-in-out;
-      }
-      
-      button:hover {
-        transform: translateY(-3px);
-        box-shadow: 5px 5px 25px rgba(0, 0, 0, 0.25), -5px -5px 25px rgba(255, 255, 255, 0.2);
-      }
-      
-      button:active {
-        transform: translateY(2px);
-        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2), -2px -2px 8px rgba(255, 255, 255, 0.1);
-      }
-      
-      button:disabled {
-        background: #ccc;
-        cursor: not-allowed;
-      }
-      
-      /* Customize Style Button of 'New File' */
-      .btn-bt-file:hover::before {
-        top: -30px;
-        left: -30px;
-      }
-      
-      .btn-bt-file::before:active {
-        background: #3e0ca3;
-        transition: background 0s;
-      }
-      
-      /* القوائم المنسدلة */
-      select {
-        background-color: #4CAF50;
-        color: white;
-        padding: 10px;
-        border: none;
-        font-size: 16px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-        margin-left: 10px;
-        cursor: pointer;
-      }
-      
-      select:hover {
-        background-color: #45a049;
-      }
-      
-      /* محرر الأكواد */
- /* تصميم المحرر */
-#editor {
-    height: 400px; /* يمكن تخصيصه حسب الحاجة */
-    font-size: 15px;
-    width: 100%; /* العرض بالكامل */
-    margin-bottom: 20px;
-    border-radius: 5px;
-    background-color: #1e1e1e; /* خلفية داكنة للمحرر */
-    color: #fff; /* نص أبيض */
-    padding: 10px;
-    font-family: 'Courier New', Courier, monospace; /* اختيار خط مخصص للأكواد */
-    line-height: 1.5; /* تحسين المسافة بين الأسطر */
-    overflow-y: auto; /* تمكين التمرير الرأسي */
-    border: 1px solid #333;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: all 0.3s ease; /* تأثير تغيير الوضع */
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+<style>
+
+    /* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f8fa;
+    color: #24292f;
 }
 
-/* الوضع الداكن */
-#editor.dark-mode {
-    background-color: #121212;
-    color: #bbb; /* نص فاتح */
+#navbar {
+    transition: background-color 0.3s ease-in-out;
 }
 
-/* إضافة تمييز للأسطر عند التحويم */
-#editor .line-highlight {
-    background-color: #4a90e2;
-    color: #fff;
+.navbar-dark.bg-dark {
+    background-color: #333333 !important;
 }
 
-/* تأثير التمرير على المحرر */
-#editor:hover {
-    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+.navbar-nav .nav-link {
+    color: white;
 }
 
-/* إضافة الميديا ريسبونسف للتأكد من تناسب المحرر على الشاشات الصغيرة */
-@media (max-width: 768px) {
-    #editor {
-        height: 300px; /* تقليل ارتفاع المحرر للأجهزة الصغيرة */
-        font-size: 13px; /* تقليل حجم الخط على الشاشات الصغيرة */
-    }
+.navbar-nav .nav-link:hover {
+    color: #f8f9fa;
 }
 
-@media (max-width: 480px) {
-    #editor {
-        height: 250px; /* تقليل ارتفاع المحرر بشكل أكبر على الشاشات الصغيرة جدًا */
-        font-size: 12px; /* تقليل حجم الخط أكثر على الشاشات الصغيرة جدًا */
-    }
+.navbar-toggler {
+    border-color: white;
 }
 
-/* تغيير حجم المحرر ليملأ كامل الشاشة عند التبديل إلى وضع ملء الشاشة */
-#editor.full-screen {
-    height: 100vh; /* استخدام ارتفاع كامل للنافذة */
-    width: 100vw; /* استخدام عرض كامل للنافذة */
-    margin: 0; /* إزالة المسافة */
-    border-radius: 0; /* إزالة الحواف الدائرية */
+#themeIcon {
+    font-size: 20px;
 }
 
-
-      /* الوضع الداكن وعكسة */
-
-/* الوضع الفاتح */
-body.light-mode {
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-.light-mode .container {
-    background-color: #fff;
-    color: #333;
-}
-
-/* الوضع الداكن */
+/* Dark Mode */
 body.dark-mode {
-    background-color: #2e2e2e;
-    color: #fff;
+    background-color: #181818;
+    color: #f1f1f1;
 }
 
-.dark-mode .container {
-    background-color: #333;
-    color: #fff;
+body.dark-mode #navbar {
+    background-color: #212529;
 }
 
-.dark-mode #editor {
-    background-color: #2e2e2e;
-    color: #fff;
+body.dark-mode .navbar-nav .nav-link {
+    color: #f1f1f1;
 }
 
-#toggleModeBtn {
-    background-color: #444;
-    color: #fff;
+body.dark-mode .navbar-nav .nav-link:hover {
+    color: #f1f1f1;
+}
+
+/* Buttons - 3D Effect */
+button {
+    padding: 12px 18px;
+    background-color: #28a745;
+    color: white;
     border: none;
-    padding: 8px 16px;
+    border-radius: 8px;
     cursor: pointer;
-    margin-left: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
 }
 
-#toggleModeBtn:hover {
-    background-color: #555;
+/* Button hover and active effects */
+button:hover {
+    background-color: #218838;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
 
-      
-      /* معاينة الكود */
-      .preview {
-        background-color: #1e1e1e;
-        padding: 20px;
-        border-radius: 5px;
-        margin-top: 20px;
-        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-      }
-      
-      .preview pre {
-        color: #dcdcdc;
-        font-family: "Courier New", Courier, monospace;
-        white-space: pre-wrap;
-        word-wrap: break-word;
-      }
-      
-      /* التنبيهات والإشعارات */
-      .notification {
-        display: none;
-        font-size: 18px;
-        font-weight: bold;
-        padding: 10px;
-        margin-bottom: 10px;
-        text-align: center;
-        border-radius: 5px;
-        width: 100%;
-        margin-top: 20px;
-      }
-      
-      .notification.success {
-        background-color: #28a745;
-        color: white;
-      }
-      
-      .notification.error {
-        background-color: #dc3545;
-        color: white;
-      }
-      
-      /* الرسالة */
-      #message {
-        font-size: 18px;
-        font-weight: bold;
-        margin-top: 20px;
-        text-align: center;
-        color: #4CAF50;
-      }
-      
-      /* الفوتر */
-      footer {
-        text-align: center;
-        margin-top: 30px;
-        font-size: 16px;
-        color: #bbb;
-      }
-      
-      footer p {
-        margin: 0;
-      }
-      
-      /* جعل الموقع متجاوب */
-      @media (max-width: 1200px) {
-        .container {
-          width: 90%;
-        }
-      
-        h1 {
-          font-size: 32px;
-        }
-      
-        button {
-          font-size: 14px;
-          padding: 10px;
-        }
-      
-        select {
-          font-size: 14px;
-        }
-      
-        #editor {
-          height: 350px;
-        }
-      
-        .preview {
-          padding: 15px;
-        }
-      }
-      
-      @media (max-width: 992px) {
-        .container {
-          width: 85%;
-        }
-      
-        h1 {
-          font-size: 28px;
-        }
-      
-        button {
-          font-size: 14px;
-          padding: 10px;
-        }
-      
-        select {
-          font-size: 14px;
-        }
-      
-        #editor {
-          height: 300px;
-        }
-      
-        .preview {
-          padding: 15px;
-        }
-      }
-      
-      @media (max-width: 768px) {
-        .controls {
-          flex-direction: column;
-          align-items: center;
-        }
-      
-        .container {
-          width: 90%;
-        }
-      
-        h1 {
-          font-size: 28px;
-        }
-      
-        button {
-          width: 100%;
-          font-size: 14px;
-          padding: 10px;
-        }
-      
-        select {
-          width: 100%;
-          margin-top: 10px;
-          font-size: 14px;
-        }
-      
-        #editor {
-          height: 300px;
-        }
-      
-        .preview {
-          padding: 10px;
-        }
-      }
-      
-      @media (max-width: 480px) {
-        .container {
-          width: 95%;
-        }
-      
-        h1 {
-          font-size: 24px;
-        }
-      
-        button {
-          width: 100%;
-          font-size: 12px;
-          padding: 8px;
-        }
-      
-        select {
-          width: 100%;
-          margin-top: 10px;
-          font-size: 14px;
-        }
-      
-        #editor {
-          height: 250px;
-        }
-      
-        .preview {
-          padding: 5px;
-        }
-      
-        /* لتوفير مسافات أكبر بين الإدخالات */
-        #searchArea,
-        .search-replace {
-          flex-direction: column;
-          align-items: center;
-        }
-      
-        #searchInput,
-        #replaceInput {
-          width: 100%;
-          margin-bottom: 10px;
-        }
-      
-        #searchBtn,
-        #replaceBtn {
-          width: 100%;
-        }
-      }
-      
-      /* في حالة الشاشات الكبيرة جداً */
-      @media (min-width: 1600px) {
-        .container {
-          width: 80%;
-        }
-      
-        h1 {
-          font-size: 36px;
-        }
-      
-        button {
-          font-size: 16px;
-          padding: 12px 20px;
-        }
-      
-        select {
-          font-size: 16px;
-        }
-      
-        #editor {
-          height: 450px;
-        }
-      
-        .preview {
-          padding: 20px;
-        }
-      }
-      
-      @media (min-width: 2000px) {
-        .container {
-          width: 75%;
-        }
-      
-        h1 {
-          font-size: 38px;
-        }
-      
-        button {
-          font-size: 18px;
-          padding: 14px 24px;
-        }
-      
-        select {
-          font-size: 18px;
-        }
-      
-        #editor {
-          height: 500px;
-        }
-      
-        .preview {
-          padding: 25px;
-        }
-      }
-      
-      /* تنسيق الجزء الخاص بالبحث و الاستدلال */
-      #searchArea {
-        display: flex;
-        justify-content: flex-start;
-        margin: 20px 0;
-        gap: 10px;
-      }
-      
-      #searchInput {
-        width: 250px;
-        padding: 10px;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-        font-size: 16px;
-      }
-      
-      #searchBtn {
-        padding: 10px 15px;
-        background-color: #008CBA;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      
-      #searchBtn:hover {
-        background-color: #005f73;
-      }
-      
-      #searchResults {
-        margin-top: 20px;
-      }
-      
-      .searchResultItem {
-        background-color: #f0f0f0;
-        padding: 10px;
-        margin: 5px 0;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-      }
-      
-      .searchResultItem:hover {
-        background-color: #e0e0e0;
-      }
-      
-      /* تنسيق الجزء الخاص بالاستبدال */
-      #replaceInput {
-        width: 250px;
-        padding: 10px;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-        font-size: 16px;
-      }
-      
-      #replaceBtn {
-        padding: 10px 15px;
-        background-color: #28a745;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      
-      #replaceBtn:hover {
-        background-color: #218838;
-      }
-      
-      .search-replace {
-        display: flex;
-        justify-content: flex-start;
-        gap: 10px;
-        margin-top: 20px;
-      }
-      
-      #replaceInput,
-      #searchInput {
-        width: 250px;
-        padding: 10px;
-        border-radius: 4px;
-        border: 1px solid #ddd;
-        font-size: 16px;
-      }
-      
-      #replaceBtn,
-      #searchBtn {
-        padding: 10px 15px;
-        background-color: #008CBA;
-        color: white;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-      }
-      
-      #replaceBtn:hover,
-      #searchBtn:hover {
-        background-color: #005f73;
-      }
-      
-      /* مسافة بين إدخال الأكواد */
-      #codeInput {
-        margin-bottom: 40px; /* مسافة بين إدخال الأكواد */
-      }
-    
-</style>    
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.4.12/ace.js"></script>
-    <script>
-        // Initialize Ace Editor
-        var editor = ace.edit("editor");
-        editor.setTheme("ace/theme/monokai");
-        editor.session.setMode("ace/mode/python");
-
-        // Enable Auto-completion and Live Autocompletion
-        editor.setOption("enableBasicAutocompletion", true);
-        editor.setOption("enableLiveAutocompletion", true);
-
-        // إنشاء ملف جديد
-        document.getElementById("newFileBtn").addEventListener("click", function() {
-            editor.setValue(""); // مسح الكود في المحرر
-            document.getElementById("message").innerText = "New file created!";
-        });
-
-        // تصدير الكود
-        document.getElementById("exportBtn").addEventListener("click", function() {
-            var code = editor.getValue();
-            fetch('/export_code', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'code=' + encodeURIComponent(code)
-            })
-            .then(response => response.json())
-            .then(data => {
-                document.getElementById("message").innerText = data.message;
-                showNotification(data.message, "success");
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById("message").innerText = "An error occurred!";
-                showNotification("An error occurred while exporting the code", "error");
-            });
-        });
-
-        // معاينة الكود
-        document.getElementById("previewBtn").addEventListener("click", function() {
-            var code = editor.getValue();
-            fetch('/preview_code', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'code=' + encodeURIComponent(code)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    document.getElementById("previewArea").textContent = data.preview;
-                } else {
-                    document.getElementById("previewArea").textContent = "Error in previewing the code.";
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById("previewArea").textContent = "An error occurred!";
-            });
-        });
-
-        // تنفيذ الكود
-        document.getElementById("runBtn").addEventListener("click", function() {
-            var code = editor.getValue();
-            fetch('/run_code', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: 'code=' + encodeURIComponent(code)
-            })
-            .then(response => response.json())
-            .then(data => {
-                if (data.status === "success") {
-                    document.getElementById("previewArea").textContent = data.output; // عرض النتيجة في previewArea
-                } else {
-                    document.getElementById("previewArea").textContent = "Error in running the code.";
-                }
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                document.getElementById("previewArea").textContent = "An error occurred!";
-            });
-        });
-
-        // حفظ الملف
-        document.getElementById("saveFileBtn").addEventListener("click", function() {
-            var code = editor.getValue();
-            var blob = new Blob([code], { type: "text/plain;charset=utf-8" });
-            var link = document.createElement("a");
-            link.href = URL.createObjectURL(blob);
-            link.download = "my_code.py";
-            link.click();
-        });
-
-        // تغيير الثيم
-        document.getElementById("themeSelect").addEventListener("change", function() {
-            var selectedTheme = this.value;
-            editor.setTheme("ace/theme/" + selectedTheme);
-        });
-
-        // تغيير لغة البرمجة
-        document.getElementById("languageSelect").addEventListener("change", function() {
-            var selectedLanguage = this.value;
-            editor.session.setMode("ace/mode/" + selectedLanguage);
-        });
-
-        // تغيير حجم النص
-        document.getElementById("fontSizeSelect").addEventListener("change", function() {
-            var selectedSize = this.value;
-            editor.setFontSize(selectedSize);
-        });
-
-        // البحث والاستبدال
-        document.getElementById("searchBtn").addEventListener("click", function() {
-            var searchTerm = document.getElementById("searchInput").value;
-            var range = editor.find(searchTerm);
-            if (range) {
-                editor.scrollToLine(range.start.row, true, true, function() {
-                    editor.selection.setRange(range);
-                });
-            } else {
-                alert("Term not found");
-            }
-        });
-
-        document.getElementById("replaceBtn").addEventListener("click", function() {
-            var searchTerm = document.getElementById("searchInput").value;
-            var replaceTerm = document.getElementById("replaceInput").value;
-            editor.find(searchTerm, {
-                wrap: true,
-                caseSensitive: false,
-                wholeWord: false,
-                regExp: false,
-            });
-            editor.replace(replaceTerm);
-        });
-
-        // عرض التنبيه
-        function showNotification(message, type) {
-            var notification = document.getElementById("errorNotification");
-            notification.innerText = message;
-            notification.style.backgroundColor = type === "success" ? "green" : "red";
-            notification.style.color = "white";
-            notification.style.padding = "10px";
-            notification.style.margin = "10px 0";
-            setTimeout(function() {
-                notification.innerText = '';
-            }, 5000);
-        }
-
-// ميزة الحفظ التلقائي
-setInterval(function () {
-    var code = editor.getValue();
-    localStorage.setItem('autoSavedCode', code);
-    showNotification('Code auto-saved!', 'success');
-}, 5000); // حفظ تلقائي كل 5 ثواني
-
-// استرجاع الكود المحفوظ تلقائيًا عند تحميل الصفحة
-window.addEventListener('load', function () {
-    var savedCode = localStorage.getItem('autoSavedCode');
-    if (savedCode) {
-        editor.setValue(savedCode);
-        showNotification('Restored auto-saved code!', 'success');
-    }
-});
-
-// ميزة الحفظ على Local Storage يدويًا
-document.getElementById("saveFileBtn").addEventListener("click", function () {
-    var code = editor.getValue();
-    localStorage.setItem('savedCode', code);
-    showNotification('Code saved to Local Storage!', 'success');
-});
-
-// استرجاع الكود المحفوظ يدويًا
-document.getElementById("newFileBtn").addEventListener("click", function () {
-    var savedCode = localStorage.getItem('savedCode');
-    if (savedCode) {
-        editor.setValue(savedCode);
-        showNotification('Restored saved code from Local Storage!', 'success');
-    } else {
-        editor.setValue('');
-        showNotification('No saved code found!', 'error');
-    }
-});
-
-// Add to Full screen
-
-function toggleFullScreen() {
-    if (!document.fullscreenElement) {
-        document.documentElement.requestFullscreen();
-    } else {
-        if (document.exitFullscreen) {
-            document.exitFullscreen();
-        }
-    }
+button:active {
+    background-color: #1e7e34;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transform: translateY(2px);
 }
 
+/* Toast Notification */
+.toast {
+    min-width: 250px;
+}
 
-    </script>
+.toast-body {
+    font-size: 14px;
+}
+
+/* Repository List */
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.repo-list h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+#repoDetails {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* File Preview */
+#filePreview img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Modal Styling */
+.modal-content {
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.modal-header {
+    background-color: #f8f9fa;
+}
+
+.modal-footer {
+    border-top: 1px solid #ddd;
+}
+
+/* General Layout */
+.container {
+    max-width: 1000px;
+    margin-top: 50px;
+}
+
+.repo-list {
+    margin-bottom: 20px;
+}
+
+#repositories {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#repositories .card {
+    background-color: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+#repoDetails {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+footer {
+    margin-top: 40px;
+}
+
+/* Navbar toggle icon adjustments */
+.navbar-toggler-icon {
+    background-color: #fff;
+}
+
+/* Toast adjustments */
+.toast {
+    min-width: 250px;
+    font-size: 14px;
+}
+
+.toast-body {
+    color: white;
+}
+
+/* Style for file upload area */
+#fileUpload {
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-top: 10px;
+}
+
+/* Styling the main content */
+main {
+    margin-top: 20px;
+}
+
+</style>
+
 </body>
 </html>
